@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="progress_animate_duration">1500</integer>
+    <integer name="porgress_default_value">40</integer>
+    <!--left:0 top:1 right:2 bottom:2-->
+    <integer name="sweepAngle">0</integer>
+    <integer name="sweepAngle2">1</integer>
+    <integer name="sweepAngle3">2</integer>
+    <integer name="sweepAngle4">3</integer>
+    <integer name="tpyeRect">0</integer>
+    <integer name="tpyeCircle">1</integer>
+    <integer name="tpyeRoundRect">2</integer>
+</resources>

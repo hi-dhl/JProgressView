@@ -1,0 +1,3 @@
+include ':JProgressView'
+include ':app'
+rootProject.name = "JProgressViewDemo"

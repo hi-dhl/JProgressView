@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".MainActivity">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.hi.dhl.jprogressview.JProgressView
+                android:id="@+id/circleProgresssView0"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                app:progress_animate_duration="@integer/progress_animate_duration"
+                app:progress_color="@color/progress_color"
+                app:progress_color_background="@color/progress_color_background"
+                app:progress_paint_bg_width="@dimen/progress_paint_width"
+                app:progress_paint_value_width="@dimen/progress_paint_width"
+                app:progress_rect_text_align="1"
+                app:progress_text_color="@color/progress_text_color"
+                app:progress_text_size="@dimen/text_size_14sp"
+                app:progress_text_visible="true"
+                app:progress_type="@integer/tpyeRoundRect"
+                app:progress_value="40" />
+
+            <com.hi.dhl.jprogressview.JProgressView
+                android:id="@+id/circleProgresssView5"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginTop="20dp"
+                app:progress_animate_duration="@integer/progress_animate_duration"
+                app:progress_color="@color/progress_color"
+                app:progress_color_background="@color/progress_color_background"
+                app:progress_paint_bg_width="@dimen/progress_paint_width"
+                app:progress_paint_value_width="@dimen/progress_paint_width"
+                app:progress_text_color="@color/progress_text_color"
+                app:progress_text_size="@dimen/text_size_14sp"
+                app:progress_text_visible="true"
+                app:progress_type="@integer/tpyeRect" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <com.hi.dhl.jprogressview.JProgressView
+                    android:id="@+id/circleProgresssView"
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:layout_weight="1"
+                    app:progress_animate_duration="@integer/progress_animate_duration"
+                    app:progress_circle_sweep_angle="@integer/sweepAngle"
+                    app:progress_color="@color/progress_color"
+                    app:progress_color_background="@color/progress_color_background"
+                    app:progress_paint_bg_width="@dimen/progress_paint_width"
+                    app:progress_paint_value_width="@dimen/progress_paint_width"
+                    app:progress_text_color="@color/progress_text_color"
+                    app:progress_text_size="@dimen/progress_text_size"
+                    app:progress_text_visible="true"
+                    app:progress_type="@integer/tpyeCircle" />
+
+                <com.hi.dhl.jprogressview.JProgressView
+                    android:id="@+id/circleProgresssView2"
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:layout_weight="1"
+                    app:progress_animate_duration="@integer/progress_animate_duration"
+                    app:progress_circle_sweep_angle="@integer/sweepAngle2"
+                    app:progress_color="@color/progress_color"
+                    app:progress_color_background="@color/progress_color_background"
+                    app:progress_paint_bg_width="@dimen/progress_paint_width"
+                    app:progress_paint_value_width="@dimen/progress_paint_width"
+                    app:progress_text_color="@color/progress_text_color"
+                    app:progress_text_size="@dimen/progress_text_size"
+                    app:progress_text_visible="true"
+                    app:progress_type="@integer/tpyeCircle" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.hi.dhl.jprogressview.JProgressView
+                    android:id="@+id/circleProgresssView3"
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:layout_weight="1"
+                    app:progress_animate_duration="@integer/progress_animate_duration"
+                    app:progress_circle_sweep_angle="@integer/sweepAngle3"
+                    app:progress_color="@color/progress_color"
+                    app:progress_color_background="@color/progress_color_background"
+                    app:progress_paint_bg_width="@dimen/progress_paint_width"
+                    app:progress_paint_value_width="@dimen/progress_paint_width"
+                    app:progress_text_color="@color/progress_text_color"
+                    app:progress_text_size="@dimen/progress_text_size"
+                    app:progress_text_visible="true"
+                    app:progress_type="@integer/tpyeCircle" />
+
+                <com.hi.dhl.jprogressview.JProgressView
+                    android:id="@+id/circleProgresssView4"
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:layout_weight="1"
+                    app:progress_animate_duration="@integer/progress_animate_duration"
+                    app:progress_circle_sweep_angle="@integer/sweepAngle4"
+                    app:progress_color="@color/progress_color"
+                    app:progress_color_background="@color/progress_color_background"
+                    app:progress_paint_bg_width="@dimen/progress_paint_width"
+                    app:progress_paint_value_width="@dimen/progress_paint_width"
+                    app:progress_text_color="@color/progress_text_color"
+                    app:progress_text_size="@dimen/progress_text_size"
+                    app:progress_text_visible="true"
+                    app:progress_type="@integer/tpyeCircle" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnStart"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="@dimen/margin_20dp"
+                    android:layout_weight="1"
+                    android:text="点击开始" />
+
+                <Button
+                    android:id="@+id/btnResver"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:text="回滚进度" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

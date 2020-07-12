@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="JProgressView">
+        <!-- 通用属性适合所有形状的进度条 -->
+        <attr name="progress_color" format="color" />
+        <attr name="progress_color_background" format="color" />
+        <attr name="progress_value" format="integer" />
+        <attr name="progress_value_max" format="integer" />
+        <attr name="progress_animate_duration" format="integer" />
+        <attr name="progress_type" format="integer" />
+        <attr name="progress_text" format="string" />
+        <attr name="progress_text_size" format="dimension" />
+        <attr name="progress_text_color" format="color" />
+        <attr name="progress_text_visible" format="boolean" />
+        <attr name="progress_paint_bg_width" format="dimension" />
+        <attr name="progress_paint_value_width" format="dimension" />
+
+        <!-- 圆形进度条专有属性 -->
+        <attr name="progress_circle_sweep_angle" format="integer" />
+
+        <!-- 矩形 或者 圆角矩形 进度条专有属性 -->
+        <attr name="progress_rect_text_align" format="integer" />
+        <attr name="progress_rect_radius" format="dimension" />
+
+    </declare-styleable>
+
+</resources>
