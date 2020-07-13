@@ -2,14 +2,16 @@
 # <p align="center"> JProgressView </p>
 
 <p align="center">
-一个灵活的进度条，支持图形：圆形、圆角矩形、矩形等等
+一个灵活的进度条，支持图形：圆形、圆角矩形、矩形等等，陆续会添加更多的图形
 </p>
 
 <p align="center">
 <a href="https://github.com/hi-dhl"><img src="https://img.shields.io/badge/GitHub-HiDhl-4BC51D.svg?style=flat"></a> <a href="https://opensource.org/licenses/Apache-2.0"><img src="https://img.shields.io/badge/license-Apache2.0-blue.svg?style=flat"></a> <img src="https://img.shields.io/badge/language-kotlin-orange.svg"/> <img src="https://img.shields.io/badge/platform-android-lightgrey.svg"/>
 </p>
 
-![](http://cdn.51git.cn/2020-07-13-15946108487308.gif)
+<p align="center">
+<img src="http://cdn.51git.cn/2020-07-13-15946108487308.gif"/> 
+</p>
 
 
 ## Download
