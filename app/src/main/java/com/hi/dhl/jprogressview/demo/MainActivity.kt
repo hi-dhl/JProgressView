@@ -11,25 +11,27 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         btnStart.setOnClickListener {
-            circleProgresssView0
-                    .setProgress(60F)
-                    .setMaxProgress(300)
-                    .setReverse(false)
-                    .startAnimal()
-            circleProgresssView.setProgress(80f).setReverse(false).startAnimal()
-            circleProgresssView2.setProgress(70F).setReverse(false).startAnimal()
-            circleProgresssView3.setProgress(50f).setReverse(false).startAnimal()
-            circleProgresssView4.setProgress(90F).setReverse(false).startAnimal()
-            circleProgresssView5.setProgress(60F).setReverse(false).startAnimal()
+            progresssView
+                    .setProgress(90f) // 当前进度
+                    .setMaxProgress(300) // 进度条的最大值
+                    .setReverse(false) // 进度条回放
+                    .startAnimal() // 开启动画
+            progresssView3.setProgress(80f).setReverse(false).startAnimal()
+            progresssView4.setProgress(70F).setReverse(false).startAnimal()
+            progresssView5.setProgress(50f).setReverse(false).startAnimal()
+            progresssView6.setProgress(90F).setReverse(false).startAnimal()
+            progresssView1.setProgress(60F).setReverse(false).startAnimal()
+            progresssView2.setProgress(60F).setReverse(false).startAnimal()
         }
 //
         btnResver.setOnClickListener {
-            circleProgresssView0.setProgress(90f).setReverse(true).startAnimal()
-            circleProgresssView.setProgress(80f).setReverse(true).startAnimal()
-            circleProgresssView2.setProgress(70F).setReverse(true).startAnimal()
-            circleProgresssView3.setProgress(50f).setReverse(true).startAnimal()
-            circleProgresssView4.setProgress(90F).setReverse(true).startAnimal()
-            circleProgresssView5.setProgress(60F).setReverse(true).startAnimal()
+            progresssView.setProgress(90f).setReverse(true).startAnimal()
+            progresssView3.setProgress(80f).setReverse(true).startAnimal()
+            progresssView2.setProgress(60F).setReverse(true).startAnimal()
+            progresssView4.setProgress(70F).setReverse(true).startAnimal()
+            progresssView5.setProgress(50f).setReverse(true).startAnimal()
+            progresssView6.setProgress(90F).setReverse(true).startAnimal()
+            progresssView1.setProgress(60F).setReverse(true).startAnimal()
         }
     }
 }

@@ -19,7 +19,7 @@
             android:orientation="vertical">
 
             <com.hi.dhl.jprogressview.JProgressView
-                android:id="@+id/circleProgresssView0"
+                android:id="@+id/progresssView"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 app:progress_animate_duration="@integer/progress_animate_duration"
@@ -27,15 +27,17 @@
                 app:progress_color_background="@color/progress_color_background"
                 app:progress_paint_bg_width="@dimen/progress_paint_width"
                 app:progress_paint_value_width="@dimen/progress_paint_width"
-                app:progress_rect_text_align="1"
+                app:progress_rect_radius="8dp"
+                app:progress_rect_text_align="2"
                 app:progress_text_color="@color/progress_text_color"
                 app:progress_text_size="@dimen/text_size_14sp"
                 app:progress_text_visible="true"
                 app:progress_type="@integer/tpyeRoundRect"
-                app:progress_value="40" />
+                app:progress_value="40"
+                app:progress_value_max="100" />
 
             <com.hi.dhl.jprogressview.JProgressView
-                android:id="@+id/circleProgresssView5"
+                android:id="@+id/progresssView1"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:layout_marginTop="20dp"
@@ -47,7 +49,29 @@
                 app:progress_text_color="@color/progress_text_color"
                 app:progress_text_size="@dimen/text_size_14sp"
                 app:progress_text_visible="true"
-                app:progress_type="@integer/tpyeRect" />
+                app:progress_type="@integer/tpyeRect"
+                app:progress_value="0"
+                app:progress_value_max="100" />
+
+            <com.hi.dhl.jprogressview.JProgressView
+                android:id="@+id/progresssView2"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginTop="20dp"
+                app:progress_animate_duration="@integer/progress_animate_duration"
+                app:progress_color="@color/progress_color"
+                app:progress_color_background="@color/progress_color_background"
+                app:progress_paint_bg_width="@dimen/progress_paint_width"
+                app:progress_paint_value_width="@dimen/progress_paint_width"
+                app:progress_rect_radius="8dp"
+                app:progress_rect_text_align="0"
+                app:progress_text_color="@color/progress_text_color"
+                app:progress_text_size="@dimen/text_size_14sp"
+                app:progress_text_visible="true"
+                app:progress_type="@integer/tpyeRoundRect"
+                app:progress_value="0"
+                app:progress_value_max="100" />
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -56,7 +80,7 @@
                 android:orientation="horizontal">
 
                 <com.hi.dhl.jprogressview.JProgressView
-                    android:id="@+id/circleProgresssView"
+                    android:id="@+id/progresssView3"
                     android:layout_width="0dp"
                     android:layout_height="200dp"
                     android:layout_weight="1"
@@ -72,7 +96,7 @@
                     app:progress_type="@integer/tpyeCircle" />
 
                 <com.hi.dhl.jprogressview.JProgressView
-                    android:id="@+id/circleProgresssView2"
+                    android:id="@+id/progresssView4"
                     android:layout_width="0dp"
                     android:layout_height="200dp"
                     android:layout_weight="1"
@@ -95,7 +119,7 @@
                 android:orientation="horizontal">
 
                 <com.hi.dhl.jprogressview.JProgressView
-                    android:id="@+id/circleProgresssView3"
+                    android:id="@+id/progresssView5"
                     android:layout_width="0dp"
                     android:layout_height="200dp"
                     android:layout_weight="1"
@@ -111,7 +135,7 @@
                     app:progress_type="@integer/tpyeCircle" />
 
                 <com.hi.dhl.jprogressview.JProgressView
-                    android:id="@+id/circleProgresssView4"
+                    android:id="@+id/progresssView6"
                     android:layout_width="0dp"
                     android:layout_height="200dp"
                     android:layout_weight="1"

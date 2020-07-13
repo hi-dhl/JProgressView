@@ -172,6 +172,16 @@ class JProgressView @JvmOverloads constructor(
         return this
     }
 
+    fun setAnimateDuration(animate: Long): JProgressView {
+        mDuration = animate
+        return this
+    }
+
+    fun isShowText(visible: Boolean): JProgressView {
+        mShowText = visible
+        return this
+    }
+
     fun stopAnimal() {
         mValueAnimator?.end()
     }
