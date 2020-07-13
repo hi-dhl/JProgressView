@@ -9,7 +9,8 @@
 <a href="https://github.com/hi-dhl"><img src="https://img.shields.io/badge/GitHub-HiDhl-4BC51D.svg?style=flat"></a> <a href="https://opensource.org/licenses/Apache-2.0"><img src="https://img.shields.io/badge/license-Apache2.0-blue.svg?style=flat"></a> <img src="https://img.shields.io/badge/language-kotlin-orange.svg"/> <img src="https://img.shields.io/badge/platform-android-lightgrey.svg"/>
 </p>
 
-![](http://cdn.51git.cn/2020-07-13-1594578127940.gif)
+![](http://cdn.51git.cn/2020-07-13-15946108487308.gif)
+
 
 ## Download
 
