@@ -42,19 +42,20 @@ class MainActivity : AppCompatActivity() {
 
     private fun initJProgresssView() {
         progresssView10
-            .setProgress(0f)
-            .setMaxProgress(100)
-            .setAnimateDuration(1000)
-            .isShowText(true)
-            .setProgressColor(resources.getColor(R.color.progress_color, null))
-            .setProgressColorBackground(resources.getColor(R.color.progress_color_background, null))
-            .setRectRadius(resources.getDimension(R.dimen.common_radius_8dp))
-            .setRectTextAlign(1)
-            .setTextColor(resources.getColor(R.color.progress_text_color, null))
-            .setTextSize(resources.getDimension(R.dimen.text_size_14sp))
-            .setShapeType(2)
-            .setProgressPaintBackgroundWidth(resources.getDimension(R.dimen.progress_paint_width))
-            .setProgressPaintWidth(resources.getDimension(R.dimen.progress_paint_width))
-            .resetValue()
+            .setProgress(0f)// 当前进度
+            .setMaxProgress(100)// 进度条的最大值
+            .setReverse(false)// 进度条回放
+            .setAnimateDuration(1000)// 动画运行时间
+            .isShowText(true)// 是否显示文字
+            .setProgressColor(resources.getColor(R.color.progress_color, null))// 当前进度颜色
+            .setProgressColorBackground(resources.getColor(R.color.progress_color_background, null))// 进度条背景颜色
+            .setRectRadius(resources.getDimension(R.dimen.common_radius_8dp))// 圆角
+            .setRectTextAlign(1)// 文字位于进度条位置(左边：0；中间：1；右边：2)
+            .setTextColor(resources.getColor(R.color.progress_text_color, null))// 文字颜色
+            .setTextSize(resources.getDimension(R.dimen.text_size_14sp))// 文字大小
+            .setShapeType(2)// 形状： 矩形：0；圆形：1；圆角矩形：2
+            .setProgressPaintBackgroundWidth(resources.getDimension(R.dimen.progress_paint_width))// 进度条背景画笔的宽度
+            .setProgressPaintWidth(resources.getDimension(R.dimen.progress_paint_width))// 当前进度画笔的宽度
+            .resetValue()// 通过代码设置完属性之后，需要调用，重新绘制
     }
 }

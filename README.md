@@ -1,5 +1,5 @@
 
-# <p align="center"> JProgressView </p>
+# <p align="center"> JProgressView <br/> <img src='http://cdn.51git.cn/2020-07-15-15948208369286.gif'></p>
 
 <p align="center"> 如果这个仓库对你有帮助，请仓库右上角帮我 star 一下</p>
 
@@ -15,10 +15,16 @@
 <img src="http://cdn.51git.cn/2020-07-13-15946108487308.gif"/> 
 </p>
 
+## JProgressView 包含以下功能
+
+* 支持在 XML 中配置是否自动播放动画（true : 当 view 可见的时候会自动播放动画）
+* 支持自定义图形：圆形、圆角矩形、矩形
+* 支持代码和 XML 设置进度条属性；同时设置代码会覆盖 XML 设置的属性
+* 支持设置文字是否显示，文字距离进度条的位置、大小、颜色等等
+* 支持设置进度的的颜色，当前进度值、进度的最大值、动画运行时间等等
+* 更多功能正在开发中...... 
 
 ## Download
-
-**Gradle**
 
 * 将下列代码添加在项目 build.gradle 文件内
 
@@ -34,21 +40,19 @@ allprojects {
 
 ```
 dependencies {
-    implementation 'com.hi-dhl:progressview:1.0.0'
+    implementation 'com.hi-dhl:progressview:1.0.1'
 }
 ```
 
 ## Usage
 
-在 layout 文件内添加以下命名空间
+**1.在 layout 文件内添加以下命名空间**
 
 ```
 xmlns:app="http://schemas.android.com/apk/res-auto"
 ```
 
-### 进度条
-
-**实现一个进度条基本示例**
+**2.实现一个进度条基本示例**
 
 ```
 <com.hi.dhl.jprogressview.JProgressView
@@ -74,7 +78,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 
 | 名称 | 值类型 | 默认值 | 备注 |
 | --- | --- | --- | --- |
-| progress_type | integer  | 圆形：1 | 矩形：0；矩形：0；矩形：0 |
+| progress_type | integer  | 圆形：1 | 矩形：0；圆形：1；圆角矩形：2 |
 | progress_animate_duration | integer | 2000 | 动画运行时间 |
 | progress_color | color | Color.GRAY | 当前进度颜色 |
 | progress_color_background | color  | Color.GRAY | 进度条背景颜色 |
@@ -85,6 +89,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 | progress_text_visible | boolean | 默认不显示：false | 是否显示文字 |
 | progress_value | integer | 0 | 当前进度 |
 | progress_value_max | integer | 100 | 当前进度条的最大值 |
+| progress_start_animate | boolean | 默认不自动开启：false | 是否开动画自动播放 |
 
 **以下属性，矩形 或者 圆角矩形进度条专有属性：**
 
@@ -113,14 +118,25 @@ circleProgresssView0.startAnimal()
 progresssView.stopAnimal()
 ```
 
-还可以通过代码设置进度条一些属性：
+还可以通过代码设置进度条一些属性，代码会覆盖 XML 设置的属性
 
 ```
 progresssView
-    .setProgress(90f) // 当前进度
-    .setMaxProgress(300) // 进度条的最大值
-    .setReverse(false) // 进度条回放
-    .startAnimal() // 开启动画
+    .setProgress(0f)// 当前进度
+    .setMaxProgress(100)// 进度条的最大值
+    .setReverse(false)// 进度条回放
+    .setAnimateDuration(1000)// 动画运行时间
+    .isShowText(true)// 是否显示文字
+    .setProgressColor(resources.getColor(R.color.progress_color, null))// 当前进度颜色
+    .setProgressColorBackground(resources.getColor(R.color.progress_color_background, null))// 进度条背景颜色
+    .setRectRadius(resources.getDimension(R.dimen.common_radius_8dp))// 圆角
+    .setRectTextAlign(1)// 文字位于进度条位置(左边：0；中间：1；右边：2)
+    .setTextColor(resources.getColor(R.color.progress_text_color, null))// 文字颜色
+    .setTextSize(resources.getDimension(R.dimen.text_size_14sp))// 文字大小
+    .setShapeType(2)// 形状： 矩形：0；圆形：1；圆角矩形：2
+    .setProgressPaintBackgroundWidth(resources.getDimension(R.dimen.progress_paint_width))// 进度条背景画笔的宽度
+    .setProgressPaintWidth(resources.getDimension(R.dimen.progress_paint_width))// 当前进度画笔的宽度
+    .resetValue()// 通过代码设置完属性之后，需要调用，重新绘制
 ```
 
 未来还未支持更多自定义图形，请持续关注，如果这个仓库对你有帮助，请仓库右上角帮我 star 一下。
