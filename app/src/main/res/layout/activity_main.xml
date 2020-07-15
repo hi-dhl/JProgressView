@@ -19,9 +19,15 @@
             android:orientation="vertical">
 
             <com.hi.dhl.jprogressview.JProgressView
+                android:id="@+id/progresssView10"
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <com.hi.dhl.jprogressview.JProgressView
                 android:id="@+id/progresssView"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
+                android:layout_marginTop="20dp"
                 app:progress_animate_duration="@integer/progress_animate_duration"
                 app:progress_color="@color/progress_color"
                 app:progress_color_background="@color/progress_color_background"
@@ -29,6 +35,7 @@
                 app:progress_paint_value_width="@dimen/progress_paint_width"
                 app:progress_rect_radius="8dp"
                 app:progress_rect_text_align="2"
+                app:progress_start_animate="true"
                 app:progress_text_color="@color/progress_text_color"
                 app:progress_text_size="@dimen/text_size_14sp"
                 app:progress_text_visible="true"

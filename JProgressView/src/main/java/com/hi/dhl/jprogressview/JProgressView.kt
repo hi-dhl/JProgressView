@@ -13,6 +13,7 @@ import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.View
 import android.view.animation.LinearInterpolator
+import androidx.annotation.*
 
 /**
  * <pre>
@@ -30,7 +31,7 @@ class JProgressView @JvmOverloads constructor(
     defStyleRes: Int = 0
 ) : View(context, attributeSet, defStyleAttr, defStyleRes) {
 
-    private val mCirclePaint = Paint(Paint.ANTI_ALIAS_FLAG)
+    private val mProgressBackgroundPaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val mProgressPaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val mCenterTextPaint = TextPaint(Paint.ANTI_ALIAS_FLAG)
     private val mRect = RectF()
@@ -44,14 +45,14 @@ class JProgressView @JvmOverloads constructor(
     private var mHeight = 0f
     private var mMaxProgress = 100
 
-    private var mCircleStrokeWidth = DEFAULT_STROKE_WIDTH
-    private var mCircleColor = Color.GRAY
+    private var mProgressPaintBackgroundWidth = DEFAULT_STROKE_WIDTH
+    private var mProgressColorBackground = Color.GRAY
 
-    private var mProgressStrokeWidth = DEFAULT_STROKE_WIDTH
+    private var mProgressPaintWidth = DEFAULT_STROKE_WIDTH
     private var mProgressColor = Color.GREEN
 
-    private var mCenterTextSize = sp2Px(20f)
-    private var mCenterTextColor = Color.BLUE
+    private var mTextSize = sp2Px(20f)
+    private var mTextColor = Color.BLUE
     private var mProgress = 0f
 
     /** 变量mSweepAngle对应四个值，代表进度条开始的方向，详见 [getSweepAngle] */
@@ -65,6 +66,7 @@ class JProgressView @JvmOverloads constructor(
     private var mTextAlign: Int = TYPE_CIRCLE
     private var mShowText = false
     private var mLabelText = ""
+    private var mStartAnimate = false
 
     init {
         initialize(attributeSet)
@@ -76,33 +78,35 @@ class JProgressView @JvmOverloads constructor(
                 context.obtainStyledAttributes(attr, R.styleable.JProgressView)
 
             try {
-                mCircleColor =
-                    typedArray.getColor(
-                        R.styleable.JProgressView_progress_color_background,
-                        mCircleColor
-                    )
-                mCircleStrokeWidth = typedArray.getDimension(
-                    R.styleable.JProgressView_progress_paint_bg_width,
-                    mCircleStrokeWidth
-                )
-
                 mProgressColor =
                     typedArray.getColor(
                         R.styleable.JProgressView_progress_color,
                         mProgressColor
                     )
-                mProgressStrokeWidth = typedArray.getDimension(
-                    R.styleable.JProgressView_progress_paint_value_width,
-                    mProgressStrokeWidth
+
+                mProgressColorBackground =
+                    typedArray.getColor(
+                        R.styleable.JProgressView_progress_color_background,
+                        mProgressColorBackground
+                    )
+                mProgressPaintBackgroundWidth = typedArray.getDimension(
+                    R.styleable.JProgressView_progress_paint_bg_width,
+                    mProgressPaintBackgroundWidth
                 )
 
-                mCenterTextColor = typedArray.getColor(
-                    R.styleable.JProgressView_progress_text_color,
-                    mCenterTextColor
+
+                mProgressPaintWidth = typedArray.getDimension(
+                    R.styleable.JProgressView_progress_paint_value_width,
+                    mProgressPaintWidth
                 )
-                mCenterTextSize = typedArray.getDimension(
+
+                mTextColor = typedArray.getColor(
+                    R.styleable.JProgressView_progress_text_color,
+                    mTextColor
+                )
+                mTextSize = typedArray.getDimension(
                     R.styleable.JProgressView_progress_text_size,
-                    mCenterTextSize
+                    mTextSize
                 )
 
                 mDuration =
@@ -140,15 +144,25 @@ class JProgressView @JvmOverloads constructor(
 
                 mRadius =
                     typedArray.getDimension(R.styleable.JProgressView_progress_rect_radius, mRadius)
+
+                mStartAnimate = typedArray.getBoolean(
+                    R.styleable.JProgressView_progress_start_animate,
+                    mStartAnimate
+                )
+
             } catch (e: Exception) {
             } finally {
                 typedArray.recycle()
             }
         }
 
-        initPaint(mCirclePaint, mCircleColor, mCircleStrokeWidth)
-        initPaint(mProgressPaint, mProgressColor, mProgressStrokeWidth)
-        initTextPaint(mCenterTextPaint)
+        resetPaint()
+    }
+
+    fun resetPaint() {
+        initPaint(mProgressBackgroundPaint, mProgressColorBackground, mProgressPaintBackgroundWidth)
+        initPaint(mProgressPaint, mProgressColor, mProgressPaintWidth)
+        initTextPaint(mCenterTextPaint, mTextColor)
     }
 
     fun setProgress(progress: Float): JProgressView {
@@ -160,11 +174,6 @@ class JProgressView @JvmOverloads constructor(
     fun setMaxProgress(maxProgress: Int): JProgressView {
         mMaxProgress = maxProgress
         return this
-    }
-
-    fun startAnimal() {
-        initAnimation()
-        mValueAnimator?.start()
     }
 
     fun setReverse(reverse: Boolean): JProgressView {
@@ -182,8 +191,64 @@ class JProgressView @JvmOverloads constructor(
         return this
     }
 
+    fun setProgressColor(@ColorInt colorId: Int): JProgressView {
+        mProgressColor = colorId
+        initPaint(mProgressPaint, mProgressColor, mProgressPaintWidth)
+        return this
+    }
+
+    fun setProgressColorBackground(@ColorInt colorId: Int): JProgressView {
+        mProgressColorBackground = colorId
+        initPaint(mProgressBackgroundPaint, mProgressColorBackground, mProgressPaintBackgroundWidth)
+        return this
+    }
+
+    fun setRectRadius(@Dimension radius: Float): JProgressView {
+        mRadius = radius
+        return this
+    }
+
+    fun setRectTextAlign(align: Int): JProgressView {
+        mTextAlign = align
+        return this
+    }
+
+    fun setTextColor(@ColorInt colodId: Int): JProgressView {
+        mTextColor = colodId
+        initTextPaint(mCenterTextPaint, mTextColor)
+        return this
+    }
+
+    fun setTextSize(@Dimension textSize: Float): JProgressView {
+        mTextSize = textSize
+        return this
+    }
+
+    fun setShapeType(type: Int): JProgressView {
+        mType = type
+        resetPaint()
+        return this
+    }
+
+    fun startAnimal() {
+        initAnimation()
+        mValueAnimator?.start()
+    }
+
     fun stopAnimal() {
         mValueAnimator?.end()
+    }
+
+    fun setProgressPaintBackgroundWidth(@Dimension width: Float): JProgressView {
+        mProgressPaintBackgroundWidth = width
+        initPaint(mProgressBackgroundPaint, mProgressColorBackground, mProgressPaintBackgroundWidth)
+        return this
+    }
+
+    fun setProgressPaintWidth(@Dimension width: Float): JProgressView {
+        mProgressPaintWidth = width
+        initPaint(mProgressPaint, mProgressColor, mProgressPaintWidth)
+        return this
     }
 
     fun getProgressRectValue(): Float = (mProgress * mWidth) / mMaxProgress
@@ -200,11 +265,11 @@ class JProgressView @JvmOverloads constructor(
         }
     }
 
-    private fun initTextPaint(paint: TextPaint) {
-        paint.color = mCenterTextColor
+    private fun initTextPaint(paint: TextPaint, color: Int) {
+        paint.color = color
         paint.isAntiAlias = true
         paint.style = Paint.Style.FILL
-        paint.textSize = mCenterTextSize
+        paint.textSize = mTextSize
     }
 
     fun getSweepAngle(direction: Int): Float {
@@ -233,7 +298,7 @@ class JProgressView @JvmOverloads constructor(
             }
 
             if (mRadius < 1) {
-                mRadius = min - Math.max(mCircleStrokeWidth, mProgressStrokeWidth)
+                mRadius = min - Math.max(mProgressPaintBackgroundWidth, mProgressPaintWidth)
             }
 
             mRect.set(
@@ -265,8 +330,15 @@ class JProgressView @JvmOverloads constructor(
         }
     }
 
+    override fun onWindowVisibilityChanged(visibility: Int) {
+        super.onWindowVisibilityChanged(visibility)
+        if (mStartAnimate && visibility == View.VISIBLE) {
+            startAnimal()
+        }
+    }
+
     private fun drawRect(canvas: Canvas) {
-        canvas.drawRect(mRect, mCirclePaint)
+        canvas.drawRect(mRect, mProgressBackgroundPaint)
         mProgressRect.set(
             paddingLeft.toFloat(),
             paddingTop.toFloat(),
@@ -306,7 +378,7 @@ class JProgressView @JvmOverloads constructor(
     }
 
     private fun drawRoundRect(canvas: Canvas) {
-        canvas.drawRoundRect(mRect, mRound, mRound, mCirclePaint)
+        canvas.drawRoundRect(mRect, mRound, mRound, mProgressBackgroundPaint)
         mProgressRect.set(
             paddingLeft.toFloat(),
             paddingTop.toFloat(),
@@ -347,7 +419,7 @@ class JProgressView @JvmOverloads constructor(
 
     private fun drawCircle(canvas: Canvas) {
         // draw circle
-        canvas.drawCircle(mCenterX, mCenterY, mRadius, mCirclePaint)
+        canvas.drawCircle(mCenterX, mCenterY, mRadius, mProgressBackgroundPaint)
         // draw progress
         canvas.drawArc(
             mRect, mSweepAngle, (mProgress / mMaxProgress) * 360,
@@ -397,11 +469,16 @@ class JProgressView @JvmOverloads constructor(
 
     private fun resetProgressValue(preogress: Float) {
         mProgress = preogress
+        resetValue()
+    }
+
+    fun resetValue(): JProgressView {
         if (isMainThread()) {
             invalidate()
         } else {
             postInvalidate()
         }
+        return this
     }
 
     private fun isMainThread() = Looper.getMainLooper().thread == Thread.currentThread()

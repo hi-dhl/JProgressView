@@ -15,6 +15,7 @@
         <attr name="progress_text_visible" format="boolean" />
         <attr name="progress_paint_bg_width" format="dimension" />
         <attr name="progress_paint_value_width" format="dimension" />
+        <attr name="progress_start_animate" format="boolean" />
 
         <!-- 圆形进度条专有属性 -->
         <attr name="progress_circle_sweep_angle" format="integer" />
