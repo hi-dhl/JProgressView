@@ -330,8 +330,8 @@ class JProgressView @JvmOverloads constructor(
         }
     }
 
-    override fun onWindowVisibilityChanged(visibility: Int) {
-        super.onWindowVisibilityChanged(visibility)
+    override fun onFinishInflate() {
+        super.onFinishInflate()
         if (mStartAnimate && visibility == View.VISIBLE) {
             startAnimal()
         }
