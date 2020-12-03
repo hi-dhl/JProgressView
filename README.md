@@ -40,7 +40,7 @@ allprojects {
 
 ```
 dependencies {
-    implementation 'com.hi-dhl:progressview:1.0.1'
+    implementation 'com.hi-dhl:progressview:1.0.2'
 }
 ```
 
